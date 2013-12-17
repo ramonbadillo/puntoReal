@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures
+END
+authors.csv
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/authors.csv
+END
+events.csv
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/events.csv
+END
+positions.csv
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/positions.csv
+END
+books.csv
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/books.csv
+END
+hosts.csv
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/hosts.csv
+END
+awesome_people.csv
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/awesome_people.csv
+END
+property_amenities.csv
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/property_amenities.csv
+END
+rm-bldg.csv
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/rm-bldg.csv
+END
+venues.csv
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/venues.csv
+END
+employees.csv
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/employees.csv
+END
+property.csv
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/property.csv
+END
+amenities.csv
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/fixtures/amenities.csv
+END

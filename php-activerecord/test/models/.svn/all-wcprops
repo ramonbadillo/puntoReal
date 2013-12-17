@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models
+END
+AwesomePerson.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/AwesomePerson.php
+END
+Amenity.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Amenity.php
+END
+Event.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Event.php
+END
+PropertyAmenity.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/PropertyAmenity.php
+END
+RmBldg.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/RmBldg.php
+END
+Host.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Host.php
+END
+Book.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Book.php
+END
+Position.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Position.php
+END
+Author.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Author.php
+END
+Employee.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Employee.php
+END
+VenueCB.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/VenueCB.php
+END
+Venue.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Venue.php
+END
+BookAttrAccessible.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/BookAttrAccessible.php
+END
+JoinBook.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/JoinBook.php
+END
+JoinAuthor.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/JoinAuthor.php
+END
+Property.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/models/Property.php
+END

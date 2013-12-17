@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers
+END
+DatabaseTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers/DatabaseTest.php
+END
+DatabaseLoader.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers/DatabaseLoader.php
+END
+AdapterTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers/AdapterTest.php
+END
+config.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers/config.php
+END
+SnakeCase_PHPUnit_Framework_TestCase.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/helpers/SnakeCase_PHPUnit_Framework_TestCase.php
+END

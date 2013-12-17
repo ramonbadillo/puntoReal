@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/adapters
+END
+PgsqlAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/adapters/PgsqlAdapter.php
+END
+OciAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/adapters/OciAdapter.php
+END
+MysqlAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/adapters/MysqlAdapter.php
+END
+SqliteAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/adapters/SqliteAdapter.php
+END

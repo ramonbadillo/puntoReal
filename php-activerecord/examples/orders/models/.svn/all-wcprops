@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/orders/models
+END
+Payment.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/orders/models/Payment.php
+END
+Order.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/orders/models/Order.php
+END
+Person.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/orders/models/Person.php
+END

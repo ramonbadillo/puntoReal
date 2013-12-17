@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib
+END
+Column.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Column.php
+END
+Relationship.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Relationship.php
+END
+Validations.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Validations.php
+END
+DateTime.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/DateTime.php
+END
+Expressions.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Expressions.php
+END
+Connection.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Connection.php
+END
+Config.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Config.php
+END
+Exceptions.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Exceptions.php
+END
+CallBack.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/CallBack.php
+END
+Reflections.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Reflections.php
+END
+Model.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Model.php
+END
+Singleton.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Singleton.php
+END
+SQLBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/SQLBuilder.php
+END
+Inflector.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Inflector.php
+END
+Table.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Table.php
+END
+ConnectionManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/ConnectionManager.php
+END
+Serialization.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Serialization.php
+END
+Utils.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/lib/Utils.php
+END

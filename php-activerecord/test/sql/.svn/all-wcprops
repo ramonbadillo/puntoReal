@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql
+END
+pgsql-after-fixtures.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/pgsql-after-fixtures.sql
+END
+mysql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/mysql.sql
+END
+oci-after-fixtures.sql
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/oci-after-fixtures.sql
+END
+oci.sql
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/oci.sql
+END
+pgsql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/pgsql.sql
+END
+sqlite.sql
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/sqlite.sql
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/sql/index.php
+END

@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test
+END
+CallbackTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/CallbackTest.php
+END
+ActiveRecordWriteTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ActiveRecordWriteTest.php
+END
+ValidatesNumericalityOfTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidatesNumericalityOfTest.php
+END
+ValidatesFormatOfTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidatesFormatOfTest.php
+END
+SQLBuilderTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/SQLBuilderTest.php
+END
+ValidatesInclusionAndExclusionOfTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidatesInclusionAndExclusionOfTest.php
+END
+MysqlAdapterTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/MysqlAdapterTest.php
+END
+InflectorTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/InflectorTest.php
+END
+AllTests.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/AllTests.php
+END
+ModelCallbackTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ModelCallbackTest.php
+END
+ConnectionManagerTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ConnectionManagerTest.php
+END
+ValidatesPresenceOfTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidatesPresenceOfTest.php
+END
+ActiveRecordFindTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ActiveRecordFindTest.php
+END
+SerializationTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/SerializationTest.php
+END
+UtilsTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/UtilsTest.php
+END
+ColumnTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ColumnTest.php
+END
+ActiveRecordTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ActiveRecordTest.php
+END
+RelationshipTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/RelationshipTest.php
+END
+PgsqlAdapterTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/PgsqlAdapterTest.php
+END
+AllValidationsTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/AllValidationsTest.php
+END
+ValidatesLengthOfTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidatesLengthOfTest.php
+END
+OciAdapterTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/OciAdapterTest.php
+END
+ValidationsTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ValidationsTest.php
+END
+ExpressionsTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ExpressionsTest.php
+END
+DateTimeTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/DateTimeTest.php
+END
+ConnectionTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ConnectionTest.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/index.php
+END
+ConfigTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/ConfigTest.php
+END
+SqliteAdapterTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/test/SqliteAdapterTest.php
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/simple
+END
+simple.sql
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/simple/simple.sql
+END
+simple_with_options.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/simple/simple_with_options.sql
+END
+simple.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/simple/simple.php
+END
+simple_with_options.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/7/trunk/%20mitko2/eventaiser/php-activerecord/examples/simple/simple_with_options.php
+END
