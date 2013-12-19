@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-
 <?
+session_start();
+if(!isset($_SESSION['currentusername'])) 
+	header('Location: index.php');
 
 require dirname(__FILE__).'/DB/db.php';
 require dirname(__FILE__).'/models/Asiento.php';
@@ -21,14 +22,12 @@ if(isset($_GET['id']))
 
 	
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Punto Real del Fresno</title>
@@ -66,7 +65,9 @@ if(isset($_GET['id']))
                     <!-- settings start -->
                     <li class="dropdown">
 						<?
-					  $salidas=Salida::find("all");
+						$fecha= date("Y-m-d");
+					  $salidas=Salida::find('all', array('conditions' => array('fecha >= ?', $fecha)));
+					  
 					  $times = count($salidas);
 							
 						?>
@@ -81,9 +82,10 @@ if(isset($_GET['id']))
                             </li>
                                
 							<?
+							
 			  	 		    for($i=0;$i<$times;$i++){
 							echo'<li>';
-							echo'<a href="#">';	
+							echo'<a href="croquis.php?id='.$salidas[$i]->id.'">';	
 							echo'<div class="task-info">';	  
 			  			    echo '<div class="desc">Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</div>';
 			  				echo '<div class="percent">'.$salidas[$i]->num_asientos.'/'.$salidas[$i]->max.'</div>';
@@ -109,61 +111,48 @@ if(isset($_GET['id']))
                             ?>
 
                             <li class="external">
-                                <a href="#">Ver Todas las Salidas</a>
+                                <a href="salidas_lista.php">Ver Todas las Salidas</a>
                             </li>
                         </ul>
                     </li>
                     <!-- settings end -->
                   
                     <!-- notification dropdown start-->
+					
+					<?
+						$listaEspera=Espera::find('all');
+						$timesEspera = count($listaEspera);
+						
+					?>
                     <li id="header_notification_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                             <i class="icon-bell-alt"></i>
-                            <span class="badge bg-warning">7</span>
+                            <span class="badge bg-warning"><? echo $timesEspera; ?></span>
                         </a>
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-yellow"></div>
                             <li>
-                                <p class="yellow">You have 7 new notifications</p>
+                                <p class="yellow">Hay <? echo $timesEspera; ?> en lista de espera </p>
                             </li>
+                            <?
+                            	for($i=0;$i<$timesEspera;$i++){
+									echo '<li><a href="#">';
+									echo '<span class="label label-warning"><i class="icon-user"></i></span>';
+									echo $listaEspera[$i]->nombre;
+									echo '<span class="small italic">';	
+									echo ' - '.$listaEspera[$i]->telefono;
+									echo '</span>';						
+									echo '</a></li>';
+								}
+                            ?>
+                            
+                                    
+                                   
+                            
+                            
                             <li>
-                                <a href="#">
-                                    <span class="label label-danger"><i class="icon-bolt"></i></span>
-                                    Server #3 overloaded.
-                                    <span class="small italic">34 mins</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-warning"><i class="icon-user"></i></span>
-                                    Juan Agregado
-                                    <span class="small italic">1 Hours</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-danger"><i class="icon-bolt"></i></span>
-                                    Database overloaded 24%.
-                                    <span class="small italic">4 hrs</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-success"><i class="icon-plus"></i></span>
-                                    New user registered.
-                                    <span class="small italic">Just now</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-info"><i class="icon-bullhorn"></i></span>
-                                    Application error.
-                                    <span class="small italic">10 mins</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">See all notifications</a>
+                                <a href="espera_lista.php">Ver toda la lista de espera</a>
                             </li>
                         </ul>
                     </li>
@@ -178,13 +167,15 @@ if(isset($_GET['id']))
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">Nombre de Usuario</span>
+                            <span class="username"><? echo $_SESSION['currentusername'];?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
+							
                             <li><a href="#"><i class="icon-cog"></i> Configuración</a></li>
-                            <li><a href="login.html"><i class="icon-key"></i> Salir</a></li>
+							<li><a href="#"><i class="icon-cog"></i> Configuración</a></li>
+                            <li><a href="logout.php"><i class="icon-key"></i> Salir</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -215,12 +206,7 @@ if(isset($_GET['id']))
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
-							  if ($idSalida == $salidas[$i]->id) {
-							  	echo '<li class="active"><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
-							  }else{
-							  	echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
-							  }
-						  	
+						  	echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
 						  }
 							
 						  ?>

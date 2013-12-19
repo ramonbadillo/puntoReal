@@ -13,12 +13,14 @@
 
 	if($u != null){
 		session_start();
-		$_SESSION['currentusername']= $u[0]->nombre;
-		$_SESSION['currentlugar']= $u[0]->lugar;
-		$_SESSION['currenttype']= $u[0]->tipo;
+		$_SESSION['currentusername'] = $u[0]->nombre;
+		$_SESSION['currentlugar'] = $u[0]->lugar;
+		$_SESSION['currenttype'] = $u[0]->tipo;
+		
+		
 		
 		header('Location: croquis.php');
 	}else {
-		header('Location: login.php');
+		header('Location: index.php');
 	}
 ?>

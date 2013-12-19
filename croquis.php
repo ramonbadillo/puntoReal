@@ -1,6 +1,9 @@
-
-<!DOCTYPE html>
 <?
+session_start();
+if(!isset($_SESSION['currentusername'])) 
+	header('Location: index.php');
+
+
 
 require dirname(__FILE__).'/DB/db.php';
 require dirname(__FILE__).'/models/Asiento.php';
@@ -24,11 +27,11 @@ if(isset($_GET['asiento']))
 
 	
 ?>
-
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Punto Real del Fresno</title>
 
@@ -176,13 +179,15 @@ if(isset($_GET['asiento']))
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">Nombre de Usuario</span>
+                            <span class="username"><? echo $_SESSION['currentusername'];?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="#"><i class="icon-cog"></i> Configuración</a></li>
-                            <li><a href="login.html"><i class="icon-key"></i> Salir</a></li>
+							
+                            <li><a href="#"><i class="icon-home"></i> <? echo $_SESSION['currentlugar']; ?></a></li>
+							<li><a href="#"><i class="icon-key"></i> Usuario: <? echo $_SESSION['currenttype']; ?></a></li>
+                            <li><a href="logout.php"><i class="icon-key"></i> Salir</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -205,11 +210,12 @@ if(isset($_GET['asiento']))
 
                   <li class="sub-menu">
                       <a class="active" href="javascript:;" >
-                          <i class="icon-tasks"></i>
+                          <i class="icon-road"></i>
                           <span>Salidas</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="salida_new.php"><i class="icon-plus"></i>Nueva Salida</a></li>
+						  <li><a  href="salidas_lista.php"><i class="icon-eye-open"></i>Ver Todas</a></li>
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
@@ -221,21 +227,41 @@ if(isset($_GET['asiento']))
                       </ul>
                   </li>
 
+
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="icon-book"></i>
-                          <span>Configuraciones</span>
+                          <i class=" icon-list-ul"></i>
+                          <span>Lista de Espera</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="widget.html">Widget</a></li>
-                          <li><a  href="slider.html">Slider</a></li>
-                          <li><a  href="nestable.html">Nestable</a></li>
-                          <li><a  href="font_awesome.html">Font Awesome</a></li>
+						  <li><a  href="espera_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li><a  href="espera_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
                       </ul>
                   </li>
-
+				  
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="icon-group"></i>
+                          <span>Puntos</span>
+                      </a>
+                      <ul class="sub">
+						  <li><a  href="punto_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li><a  href="punto_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
+                      </ul>
+                  </li>
+				  
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="icon-user"></i>
+                          <span>Usuarios</span>
+                      </a>
+                      <ul class="sub">
+						  <li><a  href="usuario_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li><a  href="usuario_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
+                      </ul>
+                  </li>
+                  
+				  
                   
 
                   
@@ -285,6 +311,7 @@ if(isset($_GET['asiento']))
 			 <div class="col-sm-4">
 			<section class="panel">
   			  <header class="panel-heading">
+				  <? echo $sActual->origen .' - '.$sActual->destino?>
   			  </header>
              
   			  <?php 
