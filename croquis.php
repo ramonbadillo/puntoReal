@@ -69,7 +69,7 @@ if(isset($_GET['asiento']))
                 <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo">Real <span>del</span> Fresno</a>
+            <a href="index.php" class="logo">Real <span>del</span> Fresno</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -201,12 +201,7 @@ if(isset($_GET['asiento']))
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                  <li>
-                      <a href="index.html">
-                          <i class="icon-dashboard"></i>
-                          <span>Inicio</span>
-                      </a>
-                  </li>
+                  
 
                   <li class="sub-menu">
                       <a class="active" href="javascript:;" >
@@ -219,7 +214,10 @@ if(isset($_GET['asiento']))
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
-						  	echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
+							  if($salidas[$i]->id==$idSalida)
+						  		 echo '<li class="active"><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
+							  else
+								  echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
 						  }
 							
 						  ?>
@@ -346,7 +344,7 @@ if(isset($_GET['asiento']))
 							 if ($a[0]->estado=="Disponible") {
 							 	echo "<a id='".$nAsi."' class='asiento' href='croquis.php?id=$idSalida&asiento=$nAsi'><strong>$numero</strong><img class='imgAsi' src='http://i.imgur.com/ryymACv.jpg'></a>";
 							 }else{
-							 	echo "<a id='".$nAsi."' class='asiento' href='croquis.php?id=$idSalida&asiento=$nAsi'><strong>$numero</strong><img class='imgAsi' src='http://i.imgur.com/8E0FlNk.jpg'></a>";
+							 	echo "<a id='".$nAsi."' class='asiento' href='croquis_ocupado.php?id=$idSalida&asiento=$nAsi'><strong>$numero</strong><img class='imgAsi' src='http://i.imgur.com/8E0FlNk.jpg'></a>";
 							 }
 							 
   							 
@@ -487,7 +485,7 @@ if(isset($_GET['asiento']))
                       </div>
                       
 					  
-                     <button type="submit" class="btn btn-info">Submit</button>
+                     <button type="submit" class="btn btn-info">Agregar Boleto</button>
                       
                      
 

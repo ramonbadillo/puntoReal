@@ -1,4 +1,10 @@
-
+<?
+session_start();
+if(isset($_SESSION['currentusername'])) 
+	header('Location: croquis.php');
+	
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

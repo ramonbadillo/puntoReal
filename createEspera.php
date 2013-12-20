@@ -8,7 +8,7 @@ require dirname(__FILE__).'/models/Espera.php';
 
 
 $db= db::dbini();
-
+$nombre = $telefono = $idpunto = $idusuario = " ";
 $nombre = $_POST["nombre"];
 $telefono = $_POST["telefono"];
 $idpunto = $_POST["idpunto"];
@@ -24,7 +24,7 @@ $espera->save();
 
     
 
-header("Location:	croquis.php");
+header("Location:	espera_lista.php");
 
 
 

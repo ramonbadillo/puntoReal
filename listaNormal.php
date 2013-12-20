@@ -1,6 +1,6 @@
 <?
 session_start();
-if(!isset($_SESSION['currentusername'])) 
+if(!isset($_SESSION['normalusername']))
 	header('Location: index.php');
 
 require dirname(__FILE__).'/DB/db.php';
@@ -111,7 +111,6 @@ if(isset($_GET['id']))
                             ?>
 
                             <li class="external">
-                                <a href="salidas_lista.php">Ver Todas las Salidas</a>
                             </li>
                         </ul>
                     </li>
@@ -146,14 +145,6 @@ if(isset($_GET['id']))
 									echo '</a></li>';
 								}
                             ?>
-                            
-                                    
-                                   
-                            
-                            
-                            <li>
-                                <a href="espera_lista.php">Ver toda la lista de espera</a>
-                            </li>
                         </ul>
                     </li>
                     <!-- notification dropdown end -->
@@ -167,14 +158,14 @@ if(isset($_GET['id']))
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             
-                            <span class="username"><? echo $_SESSION['currentusername']; ?></span>
+                            <span class="username"><? echo $_SESSION['normalusername']; ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
 							
-                            <li><a href="#"><i class="icon-home"></i> <? echo $_SESSION['currentlugar']; ?></a></li>
-							<li><a href="#"><i class="icon-key"></i> Usuario: <? echo $_SESSION['currenttype']; ?></a></li>
+                            <li><a href="#"><i class="icon-home"></i> <? echo $_SESSION['normallugar']; ?></a></li>
+							<li><a href="#"><i class="icon-key"></i> Usuario: <? echo $_SESSION['normaltype']; ?></a></li>
                             <li><a href="logout.php"><i class="icon-key"></i> Salir</a></li>
                         </ul>
                     </li>
@@ -189,20 +180,24 @@ if(isset($_GET['id']))
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                  
+                  <li>
+                      <a href="index.php">
+                          <i class="icon-dashboard"></i>
+                          <span>Inicio</span>
+                      </a>
+                  </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active" href="javascript:;" >
                           <i class="icon-road"></i>
                           <span>Salidas</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="salida_new.php"><i class="icon-plus"></i>Nueva Salida</a></li>
-						  <li><a  href="salidas_lista.php"><i class="icon-eye-open"></i>Ver Todas</a></li>
+                          
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
-						  	echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
+						  	echo '<li><a  href="croquisNormal.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
 						  }
 							
 						  ?>
@@ -211,38 +206,7 @@ if(isset($_GET['id']))
                   </li>
 
 
-                  <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
-                          <i class=" icon-list-ul"></i>
-                          <span>Lista de Espera</span>
-                      </a>
-                      <ul class="sub">
-						  <li class="active" ><a  href="espera_new.php"><i class="icon-plus"></i>Agregar</a></li>
-                          <li><a  href="espera_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
-                      </ul>
-                  </li>
-				  
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-group"></i>
-                          <span>Puntos</span>
-                      </a>
-                      <ul class="sub">
-						  <li><a  href="punto_new.php"><i class="icon-plus"></i>Agregar</a></li>
-                          <li><a  href="punto_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
-                      </ul>
-                  </li>
-				  
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-user"></i>
-                          <span>Usuarios</span>
-                      </a>
-                      <ul class="sub">
-						  <li><a  href="usuario_new.php"><i class="icon-plus"></i>Agregar</a></li>
-                          <li><a  href="usuario_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
-                      </ul>
-                  </li>
+                 
                   
 				  
                   
@@ -258,49 +222,115 @@ if(isset($_GET['id']))
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-			
-			
-			
-			<!--INICIO DEL FORM--> 
-			
-            <div class="row">
-                <div class="col-lg-6">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Añadir pesona a la lista de espera
-                        </header>
-                        <div class="panel-body">
-                            <form role="form" action="createEspera.php" method="post">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombre</label>
-                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Telefono</label>
-                                    <input type="text" name="telefono" class="form-control" placeholder="Telefono">
-                                </div>
-		                        <div class="form-group">
-		                            <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Puntos</label>
-		                            <div class="col-lg-10">
-		                                <select name="idpunto" class="form-control m-bot15">
-		  		  						<?php 
-		  		  							$puntos=Punto::all();
-		  		  							for($i=0;$i<count($puntos);$i++)
-		  		  						  		echo '<option id="idpunto" value="'.$puntos[$i]->id.'">'.$puntos[$i]->nombre.'</option>';
-		  		  						 ?>
-		                                </select>
+			  
+              <!--navigation start-->
+              <nav class="navbar navbar-inverse" role="navigation">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">Salida del 
+					      <?
+						  $sActual=Salida::find($idSalida);
+						  echo $sActual->fecha->format('d/m/Y');
+							
+					      ?>
+					  
+					  
+					  </a>
+                  </div>
 
+                  
+                      <ul class="nav navbar-nav navbar-right">
+                          <li ><a href="croquisNormal.php?id=<? echo $idSalida;?>">Croquis</a></li>
+                          <li class="active" ><a href="javascript:;">Lista</a></li>
+                      </ul>
+                  </div><!-- /.navbar-collapse -->
+              </nav>
+
+              <!--navigation end-->
+			  
+			  
+			 
+			 
+			 
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
                               
-		                            </div>
-		                        </div>
-                                <button type="submit" class="btn btn-info">Añadir</button>
-                            </form>
-
-                        </div>
-                    </section>
-                </div>
-			
-            <!--FIN DEL FORM-->
+                          </header>
+                          <table class="table table-striped table-advance table-hover">
+                              <thead>
+                              <tr>
+								  <th><i class="icon-bullhorn"></i> Pasajero</th>
+                                  <th><i class="icon-bullhorn"></i> Asiento</th>
+								  <th><i class=" icon-edit"></i> Estatus</th>
+								  <th><i class="icon-bullhorn"></i> Nombre</th>
+								  <th><i class="icon-bullhorn"></i> Punto</th>
+								  <th><i class="icon-bullhorn"></i> Origen</th>
+								  <th><i class="icon-bullhorn"></i> Destino</th>
+								  <th><i class="icon-bookmark"></i> Precio(US)</th>
+								  <th><i class="icon-bookmark"></i> Precio(MX)</th>
+                                  <th class="hidden-phone"><i class="icon-question-sign"></i> Observaciones</th>
+								  <th><i class="icon-bookmark"></i> Telefono</th>
+                                  <th><i class=" icon-edit"></i> Acciones</th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+                              <tbody>
+								  
+								  
+                             
+							  
+							  
+							  
+							  <?
+							  	$asientos=Asiento::find('all', array('conditions' => array('idsalida = ?',$idSalida)));
+								$noSi = count($asientos);
+								for($i=0;$i<$noSi;$i++){
+									if ($asientos[$i]->estado!="Disponible") {
+										echo '<tr>';
+										echo '<td>'.$asientos[$i]->pasajero.'</td>';
+										echo '<td>'.$asientos[$i]->noasiento.'</td>';
+										if ($asientos[$i]->estado=="Pagado")
+											echo '<td><span class="label label-success label-mini">'.$asientos[$i]->estado.'</span></td>';
+										elseif ($asientos[$i]->estado=="Ocupado")
+											echo '<td><span class="label label-danger label-mini">'.$asientos[$i]->estado.'</span></td>';
+										echo '<td>'.$asientos[$i]->nombre.'</td>';
+			  						    $nPunto=Punto::find($asientos[$i]->idpunto);
+		  						    
+										echo '<td>'.$nPunto->nombre.'</td>';
+										echo '<td>'.$asientos[$i]->origen.'</td>';
+										echo '<td>'.$asientos[$i]->destino.'</td>';
+										echo '<td> $'.$asientos[$i]->dollares.'.00</td>';
+										echo '<td> $'.$asientos[$i]->pesos.'.00</td>';
+										echo '<td>'.$asientos[$i]->notas.'</td>';
+										echo '<td>'.$asientos[$i]->telefono.'</td>';
+										
+										echo '</tr>';
+									}
+									
+								}
+								//print_r($a);
+								
+								
+							  ?>
+							  
+							  
+							  
+                              
+                              
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+			 
 			 
 			 
 			 

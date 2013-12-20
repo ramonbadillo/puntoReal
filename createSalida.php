@@ -8,7 +8,7 @@ require dirname(__FILE__).'/DB/db.php';
 require dirname(__FILE__).'/models/Asiento.php';
 require dirname(__FILE__).'/models/Salida.php';
 
-
+$origen=$destino=$fecha=$max=$idusuario="";
 $db= db::dbini();
 $origen = $_POST["origen"];
 $destino = $_POST["destino"];

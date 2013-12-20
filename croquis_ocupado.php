@@ -3,35 +3,41 @@ session_start();
 if(!isset($_SESSION['currentusername'])) 
 	header('Location: index.php');
 
+
+
 require dirname(__FILE__).'/DB/db.php';
 require dirname(__FILE__).'/models/Asiento.php';
+require dirname(__FILE__).'/models/Punto.php';
 require dirname(__FILE__).'/models/Salida.php';
-
+require dirname(__FILE__).'/models/Usuario.php';
 
 $db= db::dbini();
-	
+
+
+
+$last=Salida::find('last');
+$idSalida=$last->id;
+$numAsiento=1;
+
+
+if(isset($_GET['id'])) 
+	$idSalida=$_GET["id"];
+if(isset($_GET['asiento'])) 
+	$numAsiento=$_GET["asiento"];
+
 	
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.png">
-
     <title>Punto Real del Fresno</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
-	
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
@@ -41,6 +47,11 @@ $db= db::dbini();
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css" href="assets/bootstrap-datetimepicker/css/datetimepicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/jquery-multi-select/css/multi-select.css" />
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -190,7 +201,12 @@ $db= db::dbini();
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                  
+                  <li>
+                      <a href="index.php">
+                          <i class="icon-dashboard"></i>
+                          <span>Inicio</span>
+                      </a>
+                  </li>
 
                   <li class="sub-menu">
                       <a class="active" href="javascript:;" >
@@ -198,12 +214,15 @@ $db= db::dbini();
                           <span>Salidas</span>
                       </a>
                       <ul class="sub">
-                          <li class="active" ><a  href="salida_new.php"><i class="icon-plus"></i>Nueva Salida</a></li>
+                          <li><a  href="salida_new.php"><i class="icon-plus"></i>Nueva Salida</a></li>
 						  <li><a  href="salidas_lista.php"><i class="icon-eye-open"></i>Ver Todas</a></li>
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
-						  	echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
+							  if($salidas[$i]->id==$idSalida)
+						  		 echo '<li class="active"><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
+							  else
+								  echo '<li><a  href="croquis.php?id='.$salidas[$i]->id.'"><i class=" icon-caret-right"></i>Salida  '.$salidas[$i]->fecha->format('d/m/Y').'</a></li>';
 						  }
 							
 						  ?>
@@ -260,94 +279,215 @@ $db= db::dbini();
       <section id="main-content">
           <section class="wrapper">
 			  
-             
-			  
-			  
-			 
-			 
-			 
-              <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
-                          <header class="panel-heading">
-                             Form Elements
-                          </header>
-                          <div class="panel-body">
-                              <form id="newSalida" class="form-horizontal tasi-form" action="createSalida.php" method="post">
-                                  <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">Origen</label>
-                                      <div class="col-sm-10">
-                                          <input name="origen" type="text" class="form-control">
-                                      </div>
-                                  </div>
-								  
-                                  <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">Destino</label>
-                                      <div class="col-sm-10">
-                                          <input name="destino" type="text" class="form-control">
-                                      </div>
-                                  </div>
-                                  
-								  
-			                      <div class="form-group">
-			                          <label class="control-label col-md-3">Fecha de la Salida</label>
-			                          <div class="col-md-3 col-xs-11">
-			                              <input name="fecha" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
-			                              <span class="help-block">Selecciona la fecha</span>
-			                          </div>
-								  </div>
-                                  
-								  
-                                  <div class="form-group ">
-                                      <label class="control-label col-md-3">No. Asientos</label>
-                                      <div class="col-md-9">
-                                          <div id="spinner4" class="spinner">
-                                              <div class="input-group" style="width:150px;">
-                                                  <div class="spinner-buttons input-group-btn">
-                                                      <button type="button" class="btn spinner-up btn-warning">
-                                                          <i class="icon-plus"></i>
-                                                      </button>
-                                                  </div>
-                                                  <input name="max" type="text" class="spinner-input form-control" value="40" maxlength="3" readonly>
-                                                  <div class="spinner-buttons input-group-btn">
-                                                      <button type="button" class="btn spinner-down btn-danger">
-                                                          <i class="icon-minus"></i>
-                                                      </button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-								  
-                                  <div class="form-group">
-                                      <div class="col-lg-offset-2 col-lg-10">
-                                          <button type="submit" class="btn btn-info">Crear Salida</button>
-										  
-                                      </div>
-                                  </div>
-								  
-								  
-                              </form>
-                          </div>
-                      </section>
-                      
-                      
-
-                      
-
-                      
-
-                      
-
-                      
-
+              <!--navigation start-->
+              <nav class="navbar navbar-inverse" role="navigation">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">
+						  Salida del
+					      <?
+						  $sActual=Salida::find($idSalida);
+						  echo $sActual->fecha->format('d/m/Y');
+							
+					      ?>
+					  
+					  </a>
                   </div>
-              </div>
+
+                  
+                      <ul class="nav navbar-nav navbar-right">
+                          <li class="active" ><a href="javascript:;">Croquis</a></li>
+                          <li><a href="lista.php?id=<? echo $idSalida;?>">Lista</a></li>
+                      </ul>
+                  </div><!-- /.navbar-collapse -->
+              </nav>
+
+              <!--navigation end-->
+			  
+			  
+			 <div class="col-sm-4">
+			<section class="panel">
+  			  <header class="panel-heading">
+				  <? echo $sActual->origen .' - '.$sActual->destino?>
+  			  </header>
+             
+  			  <?php 
+			  
+			  
+			  
+			  
+			  
+			  $maxAsientos=$sActual->max;
+			  
+  			  $rows = ceil(($maxAsientos)/4); // define number of rows
+  			  $cols = 5;// define number of columns
+  			  
+  			  echo "<table class='table'>"; 
+  			  
+  			  $nAsi = 1;
+			  $numero=" ";
+  			  for($tr=1;$tr<=$rows;$tr++){ 
+  			      echo "<tr>"; 
+  			          for($td=1;$td<=$cols;$td++){
+						  if ($td!=3) {
+						  	
+						  
+						  if ($nAsi<10) {
+						  	$numero = "0".$nAsi;
+						  }else
+						  $numero = "".$nAsi;
+  						  	echo "<td>";
+							
+  			                 $a=Asiento::find('all', array('conditions' => array('noasiento = ? AND idsalida = ?', $nAsi,$idSalida)));	
+							 //print_r($a);
+							 if ($a[0]->estado=="Disponible") {
+							 	echo "<a id='".$nAsi."' class='asiento' href='croquis.php?id=$idSalida&asiento=$nAsi'><strong>$numero</strong><img class='imgAsi' src='http://i.imgur.com/ryymACv.jpg'></a>";
+							 }else{
+							 	echo "<a id='".$nAsi."' class='asiento' href='croquis_ocupado.php?id=$idSalida&asiento=$nAsi'><strong>$numero</strong><img class='imgAsi' src='http://i.imgur.com/8E0FlNk.jpg'></a>";
+							 }
+							 
+  							 
+							 
+							 //http://i.imgur.com/8E0FlNk.jpg
+							 
+  							 echo "</div></div>";
+							 
+  							 echo "</td>";
+  							 $nAsi++;
+  							 if ($nAsi>=$maxAsientos+1) {
+  								 break;
+  							 }
+						}else {
+							echo "<td>";
+							echo "<div></td>";
+							echo "</td>";
+						}
+  			          } 
+  			      echo "</tr>"; 
+  			  } 
+  			  echo "</table>"; 
+			  
+			      
+			      
+			    
+  			  //$e= Estado::find(2);
+  			  //echo $e->descripcion;
+  			  ?>
 			 
 			 
 			 
-			 
-			 
+			 </section>
+		    </div>
+			
+			<div class="col-sm-8">
+				<?
+					$a=Asiento::find('all', array('conditions' => array('noasiento = ? AND idsalida = ?', $numAsiento,$idSalida)));
+					
+				?>
+				<section class="panel">
+	  			  <header class="panel-heading">
+					  
+	  			  	Asiento #
+					<? 
+					echo $numAsiento." ";
+					if($a[0]->estado=="Disponible")
+						echo '<span class="label label-primary">'.$a[0]->estado;
+					elseif($a[0]->estado=="Ocupado")
+						echo '<span class="label label-danger">'.$a[0]->estado;
+					elseif($a[0]->estado=="Pagado")
+						echo '<span class="label label-success">'.$a[0]->estado; 
+					
+					
+					?>
+					
+					</span>
+	  			  </header>
+				  <div class="panel-body">
+				  
+                  <form class="form-horizontal tasi-form" >
+					  <input type="hidden" name="idAsiento" value="<? echo $a[0]->id; ?>" />
+                      
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Nombre: </label>
+						  <div class="col-lg-10">
+                          <? echo $a[0]->nombre; ?>
+						  </div>
+                      </div>
+					  
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Puntos</label>
+						  <div class="col-lg-10">
+						  <? echo $a[0]->idpunto; ?>
+						   </div>
+                      </div>
+					  
+                      <div class="form-group">
+                          <label class="control-label col-md-3">Fecha del Boleto</label>
+						  <div class="col-lg-10">
+						 <? echo $a[0]->fecha->format('d/m/Y'); ?>
+						  </div>
+					  </div>
+					  
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label col-lg-2" >Precio</label>
+                          <div class="col-lg-5">
+                              <div class="input-group m-bot15">
+                                  $<? echo $a[0]->pesos; ?> Pesos
+                              </div>
+
+                              <div class="input-group m-bot15">
+                                   $<? echo $a[0]->dollares; ?> Dolares
+                              </div>
+                          </div>
+                      </div>
+					  
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Origen</label>
+						  <div class="col-lg-10">
+                          <? echo $a[0]->origen; ?>
+						   </div>
+                      </div>
+					  
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Destino</label>
+						  <div class="col-lg-10">
+                          <? echo $a[0]->destino; ?>
+						   </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
+						  <div class="col-lg-10">
+                          <? echo $a[0]->notas; ?>
+						   </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Telefono</label>
+						  <div class="col-lg-10">
+                          <? echo $a[0]->telefono; ?>
+						  </div>
+                      </div>
+                      
+					  
+                     
+                      
+                     
+
+                  </form>
+                  </div>
+				  
+				 
+				  
+					
+				  
+				  
+				</section>
+				</div>
 			
           </section>
       </section>
@@ -364,37 +504,31 @@ $db= db::dbini();
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="js/owl.carousel.js" ></script>
-    <script src="js/jquery.customSelect.min.js" ></script>
-    <script src="js/respond.min.js" ></script>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="js/respond.min.js" ></script>
 
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+  <!--this page plugins-->
+  <!--custom checkbox & radio-->
+  <script type="text/javascript" src="js/ga.js"></script>
 
-    <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
+<script type="text/javascript" src="assets/fuelux/js/spinner.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="assets/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
 
-    <!--script for this page-->
-    <script src="js/count.js"></script>
-	<script type="text/javascript" src="assets/fuelux/js/spinner.min.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-	<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.multi-select.js"></script>
-	<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
-
-  
+  <!--common script for all pages-->
+  <script src="js/common-scripts.js"></script>
   <!--this page  script only-->
   <script src="js/advanced-form-components.js"></script>
 

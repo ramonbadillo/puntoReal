@@ -13,13 +13,18 @@
 
 	if($u != null){
 		session_start();
-		$_SESSION['currentusername'] = $u[0]->nombre;
-		$_SESSION['currentlugar'] = $u[0]->lugar;
-		$_SESSION['currenttype'] = $u[0]->tipo;
+		if($u[0]->tipo=="Admin"){
+			$_SESSION['currentusername'] = $u[0]->nombre;
+			$_SESSION['currentlugar'] = $u[0]->lugar;
+			$_SESSION['currenttype'] = $u[0]->tipo;
+			header('Location: croquis.php');
+		}else if($u[0]->tipo=="normal"){
+			$_SESSION['normalusername'] = $u[0]->nombre;
+			$_SESSION['normallugar'] = $u[0]->lugar;
+			$_SESSION['normaltype'] = $u[0]->tipo;
+			header('Location: croquisNormal.php');
+		}
 		
-		
-		
-		header('Location: croquis.php');
 	}else {
 		header('Location: index.php');
 	}

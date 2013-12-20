@@ -49,7 +49,7 @@ $db= db::dbini();
                 <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo">Real <span>del</span> Fresno</a>
+            <a href="index.php" class="logo">Real <span>del</span> Fresno</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -65,12 +65,12 @@ $db= db::dbini();
 						?>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-tasks"></i>
-                            <span class="badge bg-success"><?echo $times ?></span>
+                            <span class="badge bg-success"><?echo $times; ?></span>
                         </a>
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-green"></div>
                             <li>
-                                <p class="green"><?echo $times ?> Salidas pendientes</p>
+                                <p class="green"><?echo $times; ?> Salidas pendientes</p>
                             </li>
                                
 							<?
@@ -158,14 +158,16 @@ $db= db::dbini();
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">Nombre de Usuario</span>
+                            
+                            <span class="username"><? echo $_SESSION['currentusername']; ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="#"><i class="icon-cog"></i> Configuración</a></li>
-                            <li><a href="login.html"><i class="icon-key"></i> Salir</a></li>
+							
+                            <li><a href="#"><i class="icon-home"></i> <? echo $_SESSION['currentlugar']; ?></a></li>
+							<li><a href="#"><i class="icon-key"></i> Usuario: <? echo $_SESSION['currenttype']; ?></a></li>
+                            <li><a href="logout.php"><i class="icon-key"></i> Salir</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -179,20 +181,16 @@ $db= db::dbini();
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                  <li>
-                      <a href="index.html">
-                          <i class="icon-dashboard"></i>
-                          <span>Inicio</span>
-                      </a>
-                  </li>
+                 
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
-                          <i class="icon-tasks"></i>
+                      <a href="javascript:;" >
+                          <i class="icon-road"></i>
                           <span>Salidas</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="salida_new.php"><i class="icon-plus"></i>Nueva Salida</a></li>
+						  <li><a  href="salidas_lista.php"><i class="icon-eye-open"></i>Ver Todas</a></li>
 						  <?
 						  
 						  for($i=0;$i<$times;$i++){
@@ -204,21 +202,41 @@ $db= db::dbini();
                       </ul>
                   </li>
 
+
                   <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-book"></i>
-                          <span>Configuraciones</span>
+                      <a class="active" href="javascript:;" >
+                          <i class=" icon-list-ul"></i>
+                          <span>Lista de Espera</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="widget.html">Widget</a></li>
-                          <li><a  href="slider.html">Slider</a></li>
-                          <li><a  href="nestable.html">Nestable</a></li>
-                          <li><a  href="font_awesome.html">Font Awesome</a></li>
+						  <li><a  href="espera_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li class="active" ><a  href="espera_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
                       </ul>
                   </li>
-
+				  
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="icon-group"></i>
+                          <span>Puntos</span>
+                      </a>
+                      <ul class="sub">
+						  <li><a  href="punto_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li><a  href="punto_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
+                      </ul>
+                  </li>
+				  
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="icon-user"></i>
+                          <span>Usuarios</span>
+                      </a>
+                      <ul class="sub">
+						  <li><a  href="usuario_new.php"><i class="icon-plus"></i>Agregar</a></li>
+                          <li><a  href="usuario_lista.php"><i class="icon-eye-open"></i>Ver Todos</a></li>
+                      </ul>
+                  </li>
+                  
+				  
                   
 
                   
@@ -242,7 +260,7 @@ $db= db::dbini();
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              
+                              Ver todas las personas en la lista de espera
                           </header>
                           <table class="table table-striped table-advance table-hover">
                               <thead>
@@ -252,7 +270,6 @@ $db= db::dbini();
 								  
                                   <th><i class="icon-bullhorn"></i> Telefono</th>
 								  <th><i class="icon-bullhorn"></i> Punto</th>
-                                  <th><i class=" icon-edit"></i> Acciones</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -277,10 +294,7 @@ $db= db::dbini();
   						    
 								echo '<td>'.$nPunto->nombre.'</td>';
   								
-                                  echo  '<td>
-                                        <a href="#12"><button class="btn btn-success btn-xs"><i class="icon-ok"></i></button></a>
-                                        <a href="#12"><button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button></a>
-                                    </td>
+                                  echo  '
 								  
                                 </tr>';
 							
